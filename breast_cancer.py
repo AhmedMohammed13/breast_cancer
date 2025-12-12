@@ -5,8 +5,8 @@ import pandas as pd
 
 st.title('Breast Cancer Prediction App')
 
-with open('breast_cancer_model.pkl', 'wb') as f:
-    pickle.dump(model, f)
+with open('breast_cancer_model.pkl', 'rb') as f:
+    model = pickle.load(f)
 
 st.header('Enter patient data:')
 
