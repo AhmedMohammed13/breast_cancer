@@ -2,6 +2,7 @@ import streamlit as st
 import pickle
 import pandas as pd
 
+
 st.set_page_config(page_title="Breast Cancer Prediction")
 
 st.title("Breast Cancer Prediction App")
