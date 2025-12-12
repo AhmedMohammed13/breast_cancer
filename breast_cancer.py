@@ -22,12 +22,12 @@ st.header("Enter Patient Data")
 col1, col2 = st.columns(2)
 
 with col1:
-    radius_mean = st.number_input("Radius Mean", min_value=0.0, value=13.0, step=0.1)
-    perimeter_mean = st.number_input("Perimeter Mean", min_value=0.0, value=85.0, step=0.1)
+    radius_mean = st.number_input("Radius Mean", min_value=0.0, value=0.00, step=0.1)
+    perimeter_mean = st.number_input("Perimeter Mean", min_value=0.0, value=0.00, step=0.1)
 
 with col2:
-    texture_mean = st.number_input("Texture Mean", min_value=0.0, value=18.0, step=0.1)
-    area_mean = st.number_input("Area Mean", min_value=0.0, value=500.0, step=1.0)
+    texture_mean = st.number_input("Texture Mean", min_value=0.0, value=0.00, step=0.1)
+    area_mean = st.number_input("Area Mean", min_value=0.0, value=0.00, step=1.0)
 
 if st.button("Predict", type="primary"):
     input_data = pd.DataFrame([[
