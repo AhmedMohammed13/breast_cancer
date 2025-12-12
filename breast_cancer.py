@@ -30,7 +30,6 @@ with col2:
     area_mean = st.number_input("Area Mean", min_value=0.0, value=500.0, step=1.0)
 
 if st.button("Predict", type="primary"):
-    # إنشاء الإنبوت بنفس ترتيب وأسماء الفيتشرات اللي الموديل مدرب عليها
     input_data = pd.DataFrame([[
         radius_mean,
         texture_mean,
