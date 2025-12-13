@@ -50,7 +50,7 @@ if st.button("Predict", type="primary"):
         prediction = model.predict(input_scaled)[0]
         prob = model.predict_proba(input_scaled)[0]
 
-        if prediction == 0:
+        if prob[1]>prob[0]:
             st.success(" The tumor is **Benign** (Non-cancerous)")
             st.balloons()
         else:
