@@ -5,8 +5,9 @@ st.set_page_config(page_title="Breast Cancer Prediction")
 st.title("🔬 Breast Cancer Prediction App")
 st.write("Enter the four key measurements below to predict whether the tumor is **Benign** (non-cancerous) or **Malignant** (cancerous).")
 st.write("**Note:** This is a machine learning prediction only — always consult a medical professional for diagnosis.")
+
 try:
-    with open("breast_cancer_model.pkl", "rb") as f:
+   with open("breast_cancer_model.pkl", "rb") as f:
         artifacts = pickle.load(f)
         model = artifacts['model']
         scaler = artifacts['scaler']
