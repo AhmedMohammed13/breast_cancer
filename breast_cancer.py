@@ -2,23 +2,22 @@ import streamlit as st
 import pickle
 import pandas as pd
 
-# إعدادات الصفحة
 st.set_page_config(page_title="Breast Cancer Prediction")
 
-# العنوان والوصف
 st.title("🔬 Breast Cancer Prediction App")
 st.write("Enter the four key measurements below to predict whether the tumor is **Benign** (non-cancerous) or **Malignant** (cancerous).")
 st.write("**Note:** This is a machine learning prediction only — always consult a medical professional for diagnosis.")
 
-# تحميل الموديل
 try:
     with open("breast_cancer_model.pkl", "rb") as f:
-        model = pickle.load(f)
+        artifacts = pickle.load(f)
+        model = artifacts['model']
+        scaler = artifacts['scaler']  
 except FileNotFoundError:
     st.error("Model file 'breast_cancer_model.pkl' not found in the repository!")
     st.stop()
 except Exception as e:
-    st.error(f"Error loading model: {e}")
+    st.error(f"Error loading model or scaler: {e}")
     st.stop()
 
 st.header("Enter Patient Data")
@@ -46,14 +45,15 @@ if st.button("Predict", type="primary"):
     })
 
     try:
-        prediction = model.predict(input_data)[0]
-        prob = model.predict_proba(input_data)[0]
+        input_scaled = scaler.transform(input_data)
 
-     
+        prediction = model.predict(input_scaled)[0]
+        prob = model.predict_proba(input_scaled)[0]
+
         if prediction == 1:
             st.success(" The tumor is **Benign** (Non-cancerous)")
             st.balloons()
-        else:  # prediction == 0
+        else:
             st.error(" The tumor is **Malignant** (Cancerous)")
             st.warning("This is a prediction only. Please consult a medical professional immediately.")
 
@@ -63,5 +63,3 @@ if st.button("Predict", type="primary"):
     except Exception as e:
         st.error(f"Prediction error: {e}")
 
-st.markdown("---")
-st.caption("Built with  using Streamlit | Model: Random Forest on Breast Cancer Wisconsin Dataset")
