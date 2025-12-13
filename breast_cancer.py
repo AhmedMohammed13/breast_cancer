@@ -12,7 +12,7 @@ try:
     with open("breast_cancer_model.pkl", "rb") as f:
         artifacts = pickle.load(f)
         model = artifacts['model']
-        scaler = artifacts['sc']  
+        scaler = artifacts['scaler']  
 except FileNotFoundError:
     st.error("Model file 'breast_cancer_model.pkl' not found in the repository!")
     st.stop()
