@@ -38,10 +38,10 @@ with col2:
 
 if st.button("Predict", type="primary"):
     input_data = pd.DataFrame({
-        'mean radius': [radius_mean],
-        'mean texture': [texture_mean],
-        'mean perimeter': [perimeter_mean],
-        'mean area': [area_mean]
+        'radius_mean': [radius_mean],
+        'texture_mean': [texture_mean],
+        'perimeter_mean': [perimeter_mean],
+        'area_mean': [area_mean]
     })
 
     try:
